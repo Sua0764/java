@@ -44,8 +44,6 @@ public class Java20240304 {
             System.out.print(c);
         }
 
-        for(int a = 0; )
-
     }
 }
 
