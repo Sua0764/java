@@ -1,5 +1,5 @@
 import java.util.Arrays;
-import java.util.Scanner;
+
 
 public class Java0306Array {
     public static void main(String[] args) {
@@ -84,11 +84,24 @@ public class Java0306Array {
         //"~~~님 환영합니다"를 출력하고
         //없으면 "회원가입해주세요"를 출력 (단, 대소문자 구분하지 마시오)
 
-        String[] members = {"Steve", "Tom", "Michael", "Laura", "Jessica", "Annie"};
+       /*  String[] members = {"Steve", "Tom", "Michael", "Laura", "Jessica", "Annie"};
         Scanner sc = new Scanner(System.in);
         System.out.print("이름을 입력해 주세요 : ");
         String str = sc.nextLine();
 
+        int k = 0;
+        for ( ; k< members.length; k++) {
+            if (members[k].equalsIgnoreCase(str.toLowerCase())) {
+                System.out.println(members[k] + "님 환영합니다");
+                break;
+            }
+        }
+        if (k == members.length) {
+            System.out.println("회원가입 해주세요");
+        }
+
+
+    /*
         boolean found = false;
         for (int i=0; i< members.length; i++) {
             if (members[i].equalsIgnoreCase(str)) {
@@ -100,8 +113,9 @@ public class Java0306Array {
         }
         if (!found) {
             System.out.println("회원가입 해주세요");
+
         }
 
-
+     */
     }
 }
