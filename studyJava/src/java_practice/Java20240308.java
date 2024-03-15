@@ -1,3 +1,5 @@
+package java_practice;
+
 import java.util.Scanner;
 
 public class Java20240308 {

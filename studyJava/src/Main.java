@@ -1,24 +1,16 @@
 public class Main {
+
+    int a = 10;
+    static int b = 20;
+
     public static void main(String[] args) {
-
-        int value1 = 2;
-        int value2 = 4;
-
-        if (value1 == 4) {
-            System.out.println("A");
-        }
-        else if (value1 == 3){
-            System.out.println("B");
-        }
-        else if (value1 == 2) {
-            System.out.println("C");
-        }
-        else if (value1 == 1) {
-            System.out.println("D" +
-                    "" +
-                    "" +
-                    "");
-        }
-
+        print();
+        print(b);
     }
+
+    public static void print() {
+        System.out.println("Hello World");
+    }
+    public static void print(int x) {System.out.println(x);}
+
 }

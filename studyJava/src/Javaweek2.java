@@ -89,7 +89,7 @@ public class Javaweek2 {
                 if(j == 1) {
                     break;
                 }
-                System.out.println("A");
+                System.out.println("java0318_inherit_typecasting.A");
 
             }
         }

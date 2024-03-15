@@ -1,3 +1,5 @@
+package java_string;
+
 public class Java20240305String {
     public static void main(String[] args) {
 

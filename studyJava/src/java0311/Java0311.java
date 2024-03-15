@@ -1,3 +1,5 @@
+package java0311;
+
 public class Java0311 {
 
     //클래스에 포함된 변수 : 필드

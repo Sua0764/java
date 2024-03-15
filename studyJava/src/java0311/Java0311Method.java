@@ -1,3 +1,5 @@
+package java0311;
+
 public class Java0311Method {
 
     static int a = 1;

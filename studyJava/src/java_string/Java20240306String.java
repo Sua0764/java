@@ -1,3 +1,5 @@
+package java_string;
+
 import java.util.Arrays;
 
 public class Java20240306String {
