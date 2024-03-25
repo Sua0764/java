@@ -1,3 +1,5 @@
+package Java_class;
+
 public class Member {
     static int name;
     int age;

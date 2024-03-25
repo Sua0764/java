@@ -1,3 +1,4 @@
+package Java_typecasting;
 
 class E {}
 class F extends E {}

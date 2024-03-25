@@ -1,3 +1,5 @@
+package Java_Main;
+
 public class Main {
 
     int a = 10;

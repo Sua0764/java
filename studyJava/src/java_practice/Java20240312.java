@@ -1,3 +1,5 @@
+package java_practice;
+
 import java.util.Arrays;
 
 public class Java20240312 {

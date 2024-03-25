@@ -1,3 +1,4 @@
+package Java_class;
 
 class Human {
     String name;

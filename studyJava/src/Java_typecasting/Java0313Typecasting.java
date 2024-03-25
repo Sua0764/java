@@ -1,3 +1,5 @@
+package Java_typecasting;
+
 class  A {
     int m = 3;
     void abc() {
@@ -8,7 +10,7 @@ class  A {
 class B extends A {
     int n = 4;
     void bcd() {
-        System.out.println("B 클래스");
+        System.out.println("Java_typecasting.B 클래스");
     }
 }
 

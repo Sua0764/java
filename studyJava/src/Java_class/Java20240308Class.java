@@ -1,3 +1,5 @@
+package Java_class;
+
 public class Java20240308Class {
     public static void main(String[] args) {
         Students tom = new Students("Tom", 18, "Daejeon","123456");

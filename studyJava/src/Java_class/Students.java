@@ -1,3 +1,5 @@
+package Java_class;
+
 public class Students {
     String name;
     int age;

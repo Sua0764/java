@@ -2,7 +2,7 @@ package java_overriding;
 
 import pack1.A;
 
-class Animal {
+class   Animal {
     void cry() {
 
     }
