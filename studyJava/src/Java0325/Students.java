@@ -2,7 +2,7 @@ package Java0325;
 
 public class Students {
 
-    String[] name;
+    String name;
     String[] department;
     int[] studentId;
 
@@ -23,20 +23,20 @@ public class Students {
         this.name = name;
     }
 
-    public String getDepartment() {
+    public String[] getDepartment() {
         return department;
     }
 
     public void setDepartment(String department) {
-        this.department = department;
+        this.department = new String[]{department};
     }
 
-    public int getStudentId() {
+    public int[] getStudentId() {
         return studentId;
     }
 
     public void setStudentId(int studentId) {
-        this.studentId = studentId;
+        this.studentId = new int[]{studentId};
     }
 
     public String toString() {
