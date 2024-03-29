@@ -1,18 +1,21 @@
 package Java0328UserAndLecture;
 
 
+import Java0329.Difficulty;
+
 public class Lecture{
 
     int lectureID;
     String title;
     int duration;
-    String category;
-    String difficulty;
+
+    Category category;
+    Difficulty difficulty;
 
     public Lecture() {
     }
 
-    public Lecture(int lectureID, String title, int duration, String category, String difficulty) {
+    public Lecture(int lectureID, String title, int duration, Category category, Difficulty difficulty) {
         this.lectureID = lectureID;
         this.title = title;
         this.duration = duration;
@@ -44,19 +47,19 @@ public class Lecture{
         this.duration = duration;
     }
 
-    public String getCategory() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 
-    public String getDifficulty() {
+    public Difficulty getDifficulty() {
         return difficulty;
     }
 
-    public void setDifficulty(String difficulty) {
+    public void setDifficulty(Difficulty difficulty) {
         this.difficulty = difficulty;
     }
 

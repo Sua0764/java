@@ -4,47 +4,80 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Main {
+    static ArrayList<User> users;
+    static ArrayList<Lecture> lectures;
+    static ArrayList<LectureRegistration> lectureRegistrations;
+    static ArrayList<Review> reviews;
+
+
     public static void main(String[] args) {
-        User user1 = new User("조수아","sua0764","imdnaseucho@gmail.com", LocalDate.of(2007,6,4));
-        User user2 = new User("김철수","chul0721","chulsoooo@gmail.com", LocalDate.of(2002,7,21));
-        User user3 = new User("김하늘","sky_kim","sky050412@gmail.com", LocalDate.of(2005,4,12));
-        User user4 = new User("박민주","qkrdlswn2","minnmingzoo@gmail.com", LocalDate.of(2001,2,13));
-        User user5 = new User("이세돌","badookking","thekingsedol@gmail.com", LocalDate.of(1997,5,9));
+        // 정보 초기화
+        InfoCreate.createInfos();
 
+        // 강의 ID로 수강하는 학생의 loginId 찾기
+        getLoginIdByLectureId(2);
+        // 유저의 loginId로 강의명 찾기
+        getTitleByLoginId("hero11");
+        // 강의명으로 수강생들의 이메일 찾기
+        getEmailByLectureTitle("Javascript");
 
-        Lecture lecture1 = new Lecture(1,"Drum",80,"instroment","beginner");
-        Lecture lecture2 = new Lecture(2,"Drum",120,"instroment","intermediate");
-        Lecture lecture3 = new Lecture(3,"Guitar",100,"instroment","beginner");
-        Lecture lecture4 = new Lecture(4,"Guitar",130,"instroment","intermediate");
+        Review.createReview();
+    }
 
-        ArrayList<LectureRegistration> lectureRegistration = new ArrayList<>();
-        LectureRegistration lectureRegistration1 = new LectureRegistration("sua0764",1);
-        lectureRegistration.add(lectureRegistration1);
-        LectureRegistration lectureRegistration2 = new LectureRegistration("chul0721",2);
-        lectureRegistration.add(lectureRegistration2);
-        LectureRegistration lectureRegistration3 = new LectureRegistration("sky_kim",3);
-        lectureRegistration.add(lectureRegistration3);
-        LectureRegistration lectureRegistration4 = new LectureRegistration("qkralswn2",4);
-        lectureRegistration.add(lectureRegistration4);
-        LectureRegistration lectureRegistration5 = new LectureRegistration("badookking",3);
-        lectureRegistration.add(lectureRegistration5);
-
-        for (int i = 0; i < lectureRegistration.size(); i++) {
-            if (lectureRegistration.get(i).getLectureID() == 1 ) {
-                System.out.println(lectureRegistration.get(i).getUserID());
+    // 수강등록클래스에서 lectureId로 수강생의 loginId 찾기
+    // 두개의 정보가 모두 수강등록 클래스안에 있으므로 반복문을 1회만 사용해도 됨
+    public static void getLoginIdByLectureId(int lectureId) {
+        for(int i=0; i<lectureRegistrations.size(); i++) {
+            if (lectureRegistrations.get(i).getLectureID() == lectureId) {
+                System.out.println("1. 로그인ID : "
+                        + lectureRegistrations.get(i).getUserID());
             }
         }
+    }
 
-
-        for (int i = 0; i < lectureRegistration.size(); i++) {
-            if (lectureRegistration.get(i).getUserID() == user1.loginID) {
-                int lecN = lectureRegistration.get(i).getLectureID();
-                for (int j = 0; j < lectureRegistration.size(); j++) {
-                    if ( )
+    // 수강생의 loginId로 수강중인 과목명 찾기
+    // 과목명은 수강등록 클래스안에 없기 때문에 수강등록 클래스에서 lectureId를 먼저 찾고
+    // lectureId로 과목클래스에서 과목명을 찾아야 함. (반복문 2회 필요)
+    public static void getTitleByLoginId(String loginId) {
+        for (int i=0; i<lectureRegistrations.size(); i++) {
+            if(lectureRegistrations.get(i).getUserID().equals(loginId)) {
+                int lectureId = lectureRegistrations.get(i).lectureID;
+                for (int j=0; j<lectures.size(); j++) {
+                    if (lectures.get(j).getLectureID() == lectureId) {
+                        String title = lectures.get(j).getTitle();
+                        System.out.println("2. 수강과목명 : " + title);
+                    }
                 }
             }
         }
-
-
     }
+
+    // 과목명으로 수강중인 학생들의 이메일 찾기
+    // 수강등록 클래스에서 관계정보를 얻으려면 해당 과목명의 lectureId를 먼저 얻어야 함(반복문1회)
+    // lectureId로 수강등록 클래스에서 수강생의 loginId를 얻고 (반목문1회)
+    // loginId로 유저 클래스에서 해당 유저의 이메일을 얻음(반복문1회)
+    public static void getEmailByLectureTitle(String title) {
+        int lectureId = -1;
+        for (int i=0; i<lectures.size(); i++) {
+            if (lectures.get(i).getTitle().equals(title)) {
+                lectureId = lectures.get(i).getLectureID();
+                break;
+            }
+        }
+        if (lectureId < 0) {
+            return; // lectureId가 -1이라면 해당 과목명의 과목이 없다는 뜻
+        }
+        for (int i=0; i<lectureRegistrations.size(); i++) {
+            if(lectureRegistrations.get(i).getLectureID() == lectureId) {
+                String loginId = lectureRegistrations.get(i).getUserID();
+                for (int j=0; j<users.size(); j++) {
+                    if (users.get(j).getLoginID().equals(loginId)) {
+                        String email = users.get(j).getEmail();
+                        System.out.println("3. 이메일 : " + email);
+                    }
+                }
+            }
+        }
+    }
+
 }
