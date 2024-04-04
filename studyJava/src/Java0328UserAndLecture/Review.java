@@ -3,7 +3,7 @@ package Java0328UserAndLecture;
 import java.util.ArrayList;
 
 public class Review {
-    String reviewId;
+    int reviewId;
     int rating;
     String reviewText;
     String loginID;
@@ -12,39 +12,22 @@ public class Review {
     public Review() {
     }
 
-    public Review(String reviewId, int rating, String reviewText, String loginID, int lectureID) {
+
+    public Review(int reviewId, int rating, String reviewText, String loginID, int lectureID) {
         this.reviewId = reviewId;
         this.rating = rating;
         this.reviewText = reviewText;
         this.loginID = loginID;
         this.lectureID = lectureID;
     }
-    public Review(int rating, String reviewText, String loginID, int lectureID) {
-        this.reviewId = reviewId;
-        this.rating = rating;
-        this.reviewText = reviewText;
-        this.loginID = loginID;
-        this.lectureID = lectureID;
-    }
-
-    public static boolean createReview() {
-
-        /*if () {
-            return true;
-        }*/
-
-        Main.reviews = new ArrayList<>();
-        Main.reviews.add(new Review(9,"유익한 강의 감사합니다:)","sua0764",1));
 
 
 
-    }
-
-    public String getReviewId() {
+    public int getReviewId() {
         return reviewId;
     }
 
-    public void setReviewId(String reviewId) {
+    public void setReviewId(int reviewId) {
         this.reviewId = reviewId;
     }
 
@@ -78,6 +61,11 @@ public class Review {
 
     public void setLectureID(int lectureID) {
         this.lectureID = lectureID;
+    }
+
+    public String toString() {
+        return "(" + reviewId + ": " + rating + ": " + reviewText
+                + ": " + loginID + ": " + lectureID + ")";
     }
 }
 

@@ -4,6 +4,7 @@ import Java0329.Difficulty;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 public class InfoCreate {
     public static void createInfos() {
@@ -29,5 +30,26 @@ public class InfoCreate {
         Main.lectureRegistrations.add(new LectureRegistration("sky_kim",3));
         Main.lectureRegistrations.add(new LectureRegistration("qkrdlswn2",4));
         Main.lectureRegistrations.add(new LectureRegistration("badookking",5));
+
+        Main.reviews = new ArrayList<>();
+        Main.reviews.add(new Review(1, 10,"유익한 강의 감사합니다","sua0764",10));
+
+        Main.teachers = new ArrayList<>();
+        Main.teachers.add(new Teacher("박기복","qkrrlqhs99","qkrrlqhr99@naver.com"));
+        Main.teachers.add(new Teacher("이명희","lmh_97","myungheeilee1004@gmail.com"));
+        Main.teachers.add(new Teacher("김선호","sun_rises","sunhoK0909@gmiail.com"));
+
+        Main.lectureTeachers = new ArrayList<>();
+        Main.lectureTeachers.add(new LectureTeacher("qkrrlqhs99",1));
+        Main.lectureTeachers.add(new LectureTeacher("qkrrlqhs99",2));
+        Main.lectureTeachers.add(new LectureTeacher("lmh_97",3));
+        Main.lectureTeachers.add(new LectureTeacher("sun_rises",4));
+        Main.lectureTeachers.add(new LectureTeacher("sun_rises",5));
+
+        Main.freeBoards = new ArrayList<>();
+        Main.freeBoards.add(new FreeBoard(1, "이 문제 정답 아시는 분", "수학 2번 문제 : ","sua0764", new ArrayList<>()));
+
+
+        //FreeBoard.replies.add(new Reply(1, "저요","badookking",));
     }
 }

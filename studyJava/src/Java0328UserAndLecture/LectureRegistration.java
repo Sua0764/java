@@ -1,7 +1,7 @@
 package Java0328UserAndLecture;
 
 public class LectureRegistration {
-    String userID;
+    String loginID;
     int lectureID;
 
 
@@ -9,16 +9,16 @@ public class LectureRegistration {
     }
 
     public LectureRegistration(String userID, int lectureID) {
-        this.userID = userID;
+        this.loginID = userID;
         this.lectureID = lectureID;
     }
 
-    public String getUserID() {
-        return userID;
+    public String getLoginID() {
+        return loginID;
     }
 
-    public void setUserID(String userID) {
-        this.userID = userID;
+    public void setLoginID(String userID) {
+        this.loginID = userID;
     }
 
     public int getLectureID() {

@@ -2,35 +2,76 @@ package Java0328UserAndLecture;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 public class Main {
     static ArrayList<User> users;
     static ArrayList<Lecture> lectures;
     static ArrayList<LectureRegistration> lectureRegistrations;
     static ArrayList<Review> reviews;
-
+    static ArrayList<Teacher> teachers;
+    static ArrayList<LectureTeacher> lectureTeachers;
+    static ArrayList<FreeBoard> freeBoards;
+    static ArrayList<Reply> replies;
 
     public static void main(String[] args) {
         // 정보 초기화
         InfoCreate.createInfos();
 
         // 강의 ID로 수강하는 학생의 loginId 찾기
-        getLoginIdByLectureId(2);
+        getLoginIdByLectureID(1);
         // 유저의 loginId로 강의명 찾기
-        getTitleByLoginId("hero11");
+        getTitleByLoginId("sua0764");
         // 강의명으로 수강생들의 이메일 찾기
-        getEmailByLectureTitle("Javascript");
+        getEmailByLectureTitle("Drum");
 
-        Review.createReview();
+        boolean canAddReview = false;
+        canAddReview = createReview("sua0764", 1, 10, "유익한 강의 감사합니다");
+        // void가 아닌 리턴형이 있는 메소드는 활용범위가 넓음. 예를 들어,
+        // canAddReview의 true/false 여부에 따라 유저에게 상태 알림을 보낼 수 있음
+        canAddReview = createReview("sua0764", 2, 10, "아주 좋았어요2");
+        canAddReview = createReview("sky_kim", 3, 6, "보통이에요");
+
+        getTeacherByLectureID(1);
+
+        getLectureTitleListByTeacherID("sun_rises");
+
+    }
+
+    public static void getLectureTitleListByTeacherID(String teacherID) {
+        for (int i=0; i<lectureTeachers.size(); i++) {
+            if (Objects.equals(lectureTeachers.get(i).getTeacherID(), teacherID)) {
+                int lectureID = lectureTeachers.get(i).getLectureID();
+                for (int j=0; j<lectures.size(); j++) {
+
+                }
+            }
+
+        }
+    }
+
+    public static void getTeacherByLectureID(int lectureId) {
+        for(int i=0; i<lectureTeachers.size(); i++) {
+            if (lectureTeachers.get(i).getLectureID() == lectureId) {
+                String teacherID = lectureTeachers.get(i).getTeacherID();
+                for (int j=0; j<teachers.size();j++) {
+                    if (teachers.get(j).getTeacherID() == teacherID) {
+                        String teacherName = teachers.get(j).getName();
+                        System.out.println("8. 교사 성함 : " + teacherName);
+                    }
+                }
+            }
+        }
     }
 
     // 수강등록클래스에서 lectureId로 수강생의 loginId 찾기
     // 두개의 정보가 모두 수강등록 클래스안에 있으므로 반복문을 1회만 사용해도 됨
-    public static void getLoginIdByLectureId(int lectureId) {
+    public static void getLoginIdByLectureID(int lectureId) {
         for(int i=0; i<lectureRegistrations.size(); i++) {
             if (lectureRegistrations.get(i).getLectureID() == lectureId) {
                 System.out.println("1. 로그인ID : "
-                        + lectureRegistrations.get(i).getUserID());
+                        + lectureRegistrations.get(i).getLoginID());
             }
         }
     }
@@ -40,7 +81,7 @@ public class Main {
     // lectureId로 과목클래스에서 과목명을 찾아야 함. (반복문 2회 필요)
     public static void getTitleByLoginId(String loginId) {
         for (int i=0; i<lectureRegistrations.size(); i++) {
-            if(lectureRegistrations.get(i).getUserID().equals(loginId)) {
+            if(lectureRegistrations.get(i).getLoginID().equals(loginId)) {
                 int lectureId = lectureRegistrations.get(i).lectureID;
                 for (int j=0; j<lectures.size(); j++) {
                     if (lectures.get(j).getLectureID() == lectureId) {
@@ -69,7 +110,7 @@ public class Main {
         }
         for (int i=0; i<lectureRegistrations.size(); i++) {
             if(lectureRegistrations.get(i).getLectureID() == lectureId) {
-                String loginId = lectureRegistrations.get(i).getUserID();
+                String loginId = lectureRegistrations.get(i).getLoginID();
                 for (int j=0; j<users.size(); j++) {
                     if (users.get(j).getLoginID().equals(loginId)) {
                         String email = users.get(j).getEmail();
@@ -78,6 +119,41 @@ public class Main {
                 }
             }
         }
+    }
+
+    public static boolean createReview(String loginId, int lectureId
+            , int rating, String text) {
+        // 점수체크
+        if (rating < 1 || rating > 10) {
+            System.out.println("평가점수는 1~10점 사이입니다.");
+            return false;
+        }
+        // 기존 리뷰 확인
+        if (!reviews.isEmpty()) {
+            for(Review review : reviews) {
+                if (review.getLoginID().equals(loginId)
+                        && review.getLectureID() == lectureId) {
+                    System.out.println("이미 작성한 리뷰가 있습니다.");
+                    return false;
+                }
+            }
+        }
+        // 수강여부 확인
+        boolean canReview = false;
+        for(LectureRegistration registration : lectureRegistrations) {
+            if (registration.getLoginID().equals(loginId)
+                    && registration.getLectureID() == lectureId) {
+                canReview = true;
+                break;
+            }
+        }
+        if (!canReview) {
+            System.out.println("리뷰 작성 권한이 없습니다.");
+            return false;
+        }
+        reviews.add(new Review(reviews.size()+1, rating, text, loginId, lectureId));
+        System.out.println(reviews.toString());
+        return true;
     }
 
 }
