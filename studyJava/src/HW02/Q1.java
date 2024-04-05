@@ -13,16 +13,18 @@ public class Q1 {
 
     public static String changeCase(String str) {
 
+        char letter[] = new char[str.length()];
         for (int i=0; i<str.length(); i++ ) {
-            String letter = String.valueOf(str.charAt(i));
-            if (str.charAt(i) > 64 || str.charAt(i) < 91) {
-                letter.toLowerCase();
-            } else if (str.charAt(i) > 96 || str.charAt(i) < 123) {
-                letter.toUpperCase();
-            } else { }
-            char letter2 = letter.charAt(0);
+            if (str.charAt(i) >= 'A' && str.charAt(i) <= 'Z') {
+                letter[i] = str.toLowerCase().charAt(i);
+            } else if (str.charAt(i) >= 'a' && str.charAt(i) <= 'z') {
+                letter[i] = str.toUpperCase().charAt(i);
+            } else {
+                letter[i] = str.charAt(i);
+            }
+
         }
-        return "";
+        return new String(letter);
 
     }
 }

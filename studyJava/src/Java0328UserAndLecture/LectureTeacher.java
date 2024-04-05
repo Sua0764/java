@@ -2,8 +2,8 @@ package Java0328UserAndLecture;
 
 public class LectureTeacher {
 
-    String teacherID;
-    int lectureID;
+    private String teacherID;
+    private int lectureID;
 
     public LectureTeacher() {
     }

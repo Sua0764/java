@@ -2,9 +2,9 @@ package Java0328UserAndLecture;
 
 public class Teacher {
 
-    String name;
-    String teacherID;
-    String teacherEmail;
+    private String name;
+    private String teacherID;
+    private String teacherEmail;
 
     public Teacher() {
     }
